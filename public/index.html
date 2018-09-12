@@ -10,7 +10,7 @@
 
   <div class="site-wrap">
 
-    <h1>Header</h1>
+    <h1>Header </h1>
 
     <p>Consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariaturlores sunt esse magni, ut, dignissimos.</p>
     <p>Lorem ipsum cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
@@ -46,9 +46,9 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Bekasi_Mall_Night_2.jpg" width=800 height=500  class="slide-show">
     <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Eastasia_lights.jpg" width=800 height=500  class="slide-show">
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Sheth_Motisha_Tonk_01.jpg" width=800 height=500 class="slide-show">
-
-
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
   </div>
+
 
   <script>
       function debounce(func, wait = 20, immediate = true) {
@@ -99,6 +99,22 @@
       x[slideIndex-1].style.display = "block"; 
       setTimeout(carousel, 7000); // Change image every 7 seconds
   }
+
+  // When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
     </script>
 
 </body>

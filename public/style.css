@@ -1,6 +1,6 @@
 html {
     box-sizing: border-box;
-    background: green;
+    background: aqua;
     font-family:'helvetica neue';
     font-size: 20px;
     font-weight: 200;
@@ -35,7 +35,7 @@ html {
     max-width: 1100px;
     margin: 100px auto;
     background:white;
-    padding:40px;
+    padding:80px;
     text-align: justify;
   }
 
@@ -65,3 +65,23 @@ html {
     opacity:1;
     transform:translateX(0%) scale(1);
   }
+
+  #myBtn {
+    background-color: white; 
+    border: 2px solid #4CAF50;
+    color: black;
+    padding: 20px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    float: right;
+}
+
+#myBtn:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
