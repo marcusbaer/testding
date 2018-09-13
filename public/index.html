@@ -5,7 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" type="text/css" href="style.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="scripts.js"></script>
+  <script src="vuejs.js"></script>
+  <script> window.onload = function () {
+    initaliseImages();
+    initaliseVueJS();
+  }
+</script>
 </head>
+
 <body>
    
   <nav id="main">
@@ -18,6 +28,35 @@
   <div class="site-wrap">
 
     <h1>Header </h1>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+
+   <div id="animated-number-demo">
+      <input v-model.number="number" type="number" step="500">
+      <p>{{ animatedNumber }}</p>
+   </div>
+
+    <div id="app">
+      
+
+      <span v-bind:title="message" v-on:click="doSomething" v-bind:class="{ alert: isAlert }">
+        Test
+        {{ message }}
+      </span>
+
+      <button-counter class="myBtn">Come on</button-counter>
+
+
+
+      <button-counter class="myBtn" start="7"></button-counter>
+    </div>
+
+    <script type="text/x-template" id="button-template">
+      <button v-on:click="count++">You clicked me {{ count }} times.
+        <slot></slot>
+      </button>
+    </script>
 
     <p>Consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariaturlores sunt esse magni, ut, dignissimos.</p>
     <p>Lorem ipsum cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
@@ -53,76 +92,9 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Bekasi_Mall_Night_2.jpg" width=800 height=500  class="slide-show">
     <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Eastasia_lights.jpg" width=800 height=500  class="slide-show">
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Sheth_Motisha_Tonk_01.jpg" width=800 height=500 class="slide-show">
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <button onclick="topFunction()" class="myBtn" title="Go to top">Top</button>
+
   </div>
-
-
-  <script>
-      function debounce(func, wait = 20, immediate = true) {
-        var timeout;
-        return function() {
-          var context = this, args = arguments;
-          var later = function() {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
-          };
-          var callNow = immediate && !timeout;
-          clearTimeout(timeout);
-          timeout = setTimeout(later, wait);
-          if (callNow) func.apply(context, args);
-        };
-      }
-  
-    const sliderImages = document.querySelectorAll('.slide-in');
-  
-    function checkSlide(e){
-      console.log(e);
-      sliderImages.forEach(sliderImage => {
-        const slideInAt = (window.scrollY + window.innerHeight)- sliderImage.height /2;
-        const imageBottom = sliderImage.offsetTop + sliderImage.height;
-        const isHalfShown = slideInAt > sliderImage.offsetTop;
-        const isNotScrolledPast = window.scrollY < imageBottom;
-        if(isHalfShown && isNotScrolledPast) {
-          sliderImage.classList.add('active');
-        } else {
-          sliderImage.classList.remove('active');
-        }
-      });
-    }
-  
-    window.addEventListener('scroll', debounce(checkSlide, ));
-    
-    var slideIndex = 0;
-  carousel();
-  
-  function carousel() {
-      var i;
-      var x = document.getElementsByClassName("slide-show");
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none"; 
-      }
-      slideIndex++;
-      if (slideIndex > x.length) {slideIndex = 1} 
-      x[slideIndex-1].style.display = "block"; 
-      setTimeout(carousel, 7000); // Change image every 7 seconds
-  }
-
-  // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("myBtn").style.display = "block";
-    } else {
-        document.getElementById("myBtn").style.display = "none";
-    }
-}
-
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
-    </script>
 
 </body>
 </html>
